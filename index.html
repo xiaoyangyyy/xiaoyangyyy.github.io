@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Blue Bolete — researching on-device native adaptive intelligence, kernel architecture, AI-native operating systems, and Auto Research.">
+  <meta property="og:title" content="Blue Bolete — AI-Native Systems">
+  <meta property="og:description" content="On-device adaptive intelligence. Kernel architecture. AI-native OS. Auto Research.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xiaoyangyyy.github.io/">
+  <link rel="canonical" href="https://xiaoyangyyy.github.io/">
+  <title>Blue Bolete — AI-Native Systems</title>
+  <style>
+    :root {
+      --black: #000;
+      --white: #fff;
+      --gray-100: #e8e8e8;
+      --gray-300: #a3a3a3;
+      --gray-500: #737373;
+      --gray-700: #333;
+      --gray-900: #111;
+      --mono: "SFMono-Regular", "Cascadia Code", "Roboto Mono", Consolas, "Liberation Mono", monospace;
+      --sans: Inter, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--black); }
+    body {
+      margin: 0;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--mono);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      pointer-events: none;
+      background: repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgba(255,255,255,.018) 3px, rgba(255,255,255,.018) 4px);
+    }
+    ::selection { background: var(--white); color: var(--black); }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 2px solid var(--white); outline-offset: 6px; }
+    .skip-link {
+      position: fixed;
+      top: 8px;
+      left: 8px;
+      z-index: 100;
+      padding: 8px 12px;
+      background: var(--white);
+      color: var(--black);
+      transform: translateY(-150%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      padding: 0 4vw;
+      border-bottom: 1px solid var(--gray-700);
+      background: rgba(0,0,0,.88);
+      backdrop-filter: blur(12px);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; white-space: nowrap; }
+    .brand-mark { display: inline-grid; place-items: center; width: 29px; height: 29px; border: 1px solid var(--white); }
+    .site-nav { display: flex; align-items: center; gap: clamp(16px, 3vw, 44px); margin-left: auto; }
+    .site-nav a { color: var(--gray-300); transition: color .2s ease; }
+    .site-nav a::before { content: "/"; margin-right: 5px; color: var(--gray-500); }
+    .site-nav a:hover { color: var(--white); }
+    .system-status { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .status-dot { width: 6px; height: 6px; background: var(--white); animation: blink 1.8s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: .2; } }
+
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 112px 4vw 0;
+      border-bottom: 1px solid var(--gray-700);
+      overflow: hidden;
+    }
+    .hero-meta { display: flex; justify-content: space-between; color: var(--gray-300); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
+    .hero-main { position: relative; padding: clamp(42px, 8vh, 90px) 0 48px; }
+    .kicker { margin: 0 0 24px .6vw; color: var(--gray-300); font-size: clamp(9px, .8vw, 12px); letter-spacing: .22em; text-transform: uppercase; }
+    .hero-title {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-family: var(--sans);
+      font-size: clamp(72px, 15.2vw, 242px);
+      font-weight: 900;
+      line-height: .74;
+      letter-spacing: -.085em;
+      text-transform: uppercase;
+    }
+    .hero-title span { display: block; width: max-content; max-width: 100%; }
+    .hero-title .solid { animation: enter-left 1s cubic-bezier(.16,1,.3,1) both; }
+    .hero-title .outline {
+      margin-left: 7.5vw;
+      color: transparent;
+      -webkit-text-stroke: clamp(1px, .16vw, 3px) var(--white);
+      text-stroke: clamp(1px, .16vw, 3px) var(--white);
+      animation: enter-right 1s .12s cubic-bezier(.16,1,.3,1) both;
+    }
+    @keyframes enter-left { from { opacity: 0; transform: translateX(-40px); } }
+    @keyframes enter-right { from { opacity: 0; transform: translateX(40px); } }
+    .hero-ascii {
+      position: absolute;
+      right: 1.5vw;
+      top: 44%;
+      z-index: 2;
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      transform: rotate(4deg);
+    }
+    .hero-ascii pre { margin: 0; color: var(--gray-300); font: clamp(6px, .65vw, 10px)/1.05 var(--mono); }
+    .ascii-label { margin: 0 0 8px; color: var(--gray-500); font-size: 8px; letter-spacing: .12em; writing-mode: vertical-rl; }
+    .hero-bottom { display: grid; grid-template-columns: minmax(0, 780px) auto; align-items: end; justify-content: space-between; gap: 32px; padding-bottom: 42px; }
+    .hero-statement { margin: 0; color: var(--gray-300); font-family: var(--sans); font-size: clamp(17px, 1.55vw, 25px); line-height: 1.45; }
+    .hero-statement strong { color: var(--white); font-weight: 600; }
+    .scroll-link { display: flex; align-items: center; gap: 16px; font-size: 9px; letter-spacing: .14em; white-space: nowrap; }
+    .scroll-link span { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--gray-500); transition: background .2s, color .2s; }
+    .scroll-link:hover span { background: var(--white); color: var(--black); }
+    .ticker { margin: 0 -4vw; border-top: 1px solid var(--gray-700); overflow: hidden; }
+    .ticker-track { display: flex; width: max-content; animation: ticker 32s linear infinite; }
+    .ticker-track span { padding: 13px 24px; color: var(--gray-300); font-size: 10px; letter-spacing: .14em; white-space: nowrap; }
+    .ticker-track b { color: var(--white); font-weight: 400; }
+    @keyframes ticker { to { transform: translateX(-50%); } }
+
+    .section { padding: clamp(80px, 10vw, 150px) 4vw; border-bottom: 1px solid var(--gray-700); }
+    .section-heading { display: grid; grid-template-columns: 100px 1fr auto; align-items: baseline; gap: 20px; margin-bottom: clamp(48px, 6vw, 88px); }
+    .section-number { color: var(--gray-500); font-size: 11px; white-space: nowrap; }
+    .section-title { margin: 0; font-family: var(--sans); font-size: clamp(38px, 5.5vw, 88px); line-height: .95; letter-spacing: -.055em; text-transform: uppercase; }
+    .section-code { color: var(--gray-500); font-size: 9px; letter-spacing: .12em; }
+
+    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(40px, 7vw, 110px); align-items: start; }
+    .terminal { border: 1px solid var(--gray-500); background: rgba(0,0,0,.9); box-shadow: 12px 12px 0 var(--gray-900); }
+    .terminal-bar { display: flex; align-items: center; justify-content: space-between; padding: 9px 14px; border-bottom: 1px solid var(--gray-700); color: var(--gray-500); font-size: 9px; }
+    .terminal-dots { display: flex; gap: 6px; }
+    .terminal-dots i { display: block; width: 7px; height: 7px; border: 1px solid var(--gray-500); border-radius: 50%; }
+    .terminal pre { margin: 0; padding: clamp(20px, 3vw, 40px); white-space: pre-wrap; font: clamp(11px, 1vw, 14px)/2 var(--mono); }
+    .terminal .prompt { color: var(--white); }
+    .terminal .muted { color: var(--gray-500); }
+    .terminal .cursor { display: inline-block; width: 8px; height: 15px; vertical-align: -2px; background: var(--white); animation: blink 1s steps(1) infinite; }
+    .about-cn { margin: 0 0 32px; font-family: var(--sans); font-size: clamp(18px, 1.5vw, 23px); line-height: 1.8; }
+    .about-en { margin: 0; color: var(--gray-300); font-family: var(--sans); font-size: 15px; line-height: 1.8; }
+    .about-note { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--gray-700); color: var(--gray-500); font-size: 10px; letter-spacing: .06em; }
+
+    .research-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--gray-500); border-left: 1px solid var(--gray-500); }
+    .research-card { position: relative; min-height: 400px; padding: clamp(24px, 3vw, 44px); border-right: 1px solid var(--gray-500); border-bottom: 1px solid var(--gray-500); background: var(--black); transition: background .25s, color .25s; }
+    .research-card:hover { background: var(--white); color: var(--black); }
+    .card-index { display: flex; justify-content: space-between; color: var(--gray-500); font-size: 10px; }
+    .research-card:hover .card-index, .research-card:hover .card-description { color: var(--gray-700); }
+    .research-card h3 { margin: 80px 0 26px; font-family: var(--sans); font-size: clamp(26px, 2.6vw, 42px); line-height: 1.08; letter-spacing: -.04em; }
+    .research-card h3 span { display: block; margin-bottom: 12px; font-family: var(--mono); font-size: 10px; font-weight: 400; letter-spacing: .1em; }
+    .card-description { margin: 0; color: var(--gray-300); font-family: var(--sans); font-size: 14px; line-height: 1.8; }
+    .card-tags { position: absolute; left: clamp(24px, 3vw, 44px); right: clamp(24px, 3vw, 44px); bottom: 28px; font-size: 9px; letter-spacing: .08em; }
+    .parallel-card { display: grid; grid-template-columns: .65fr 1fr; gap: 60px; margin-top: 48px; padding: clamp(30px, 5vw, 70px); background: var(--white); color: var(--black); }
+    .parallel-label { font-size: 10px; letter-spacing: .12em; }
+    .parallel-card h3 { margin: 22px 0 0; font-family: var(--sans); font-size: clamp(42px, 6vw, 86px); line-height: .9; letter-spacing: -.06em; }
+    .parallel-copy { align-self: end; }
+    .parallel-copy p { margin: 0 0 28px; font-family: var(--sans); font-size: clamp(16px, 1.4vw, 21px); line-height: 1.75; }
+    .parallel-copy .en { margin: 0; color: var(--gray-700); font-size: 13px; }
+
+    .work-list { border-top: 1px solid var(--gray-500); }
+    .work-item { display: grid; grid-template-columns: 70px minmax(220px, 1fr) minmax(260px, 1.2fr) 40px; align-items: center; gap: 24px; padding: 27px 16px; border-bottom: 1px solid var(--gray-700); transition: background .2s, color .2s; }
+    .work-item:hover { background: var(--white); color: var(--black); }
+    .work-number { color: var(--gray-500); font-size: 10px; }
+    .work-name { font-family: var(--sans); font-size: clamp(18px, 1.8vw, 28px); font-weight: 600; letter-spacing: -.025em; overflow-wrap: anywhere; }
+    .work-description { color: var(--gray-300); font-family: var(--sans); font-size: 13px; }
+    .work-item:hover .work-description { color: var(--gray-700); }
+    .work-arrow { font-size: 22px; text-align: right; }
+    .all-work { display: inline-flex; gap: 16px; align-items: center; margin-top: 36px; padding-bottom: 5px; border-bottom: 1px solid var(--white); font-size: 11px; letter-spacing: .1em; }
+
+    .trajectory-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--gray-500); }
+    .trajectory-item { padding: 32px 32px 32px 0; border-right: 1px solid var(--gray-700); }
+    .trajectory-item + .trajectory-item { padding-left: 32px; }
+    .trajectory-item:last-child { border-right: 0; }
+    .trajectory-item span { color: var(--gray-500); font-size: 10px; }
+    .trajectory-item h3 { margin: 50px 0 18px; font-family: var(--sans); font-size: clamp(23px, 2.4vw, 36px); line-height: 1.1; letter-spacing: -.035em; }
+    .trajectory-item p { margin: 0; color: var(--gray-300); font-family: var(--sans); font-size: 13px; line-height: 1.8; }
+
+    .site-footer { padding: clamp(70px, 9vw, 130px) 4vw 28px; }
+    .footer-kicker { margin: 0 0 30px; color: var(--gray-500); font-size: 10px; letter-spacing: .14em; }
+    .footer-link { display: block; width: max-content; max-width: 100%; margin-left: -.7vw; font-family: var(--sans); font-size: clamp(55px, 11.8vw, 188px); font-weight: 900; line-height: .85; letter-spacing: -.08em; color: transparent; -webkit-text-stroke: 1.5px var(--white); transition: color .25s; }
+    .footer-link:hover { color: var(--white); }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 24px; margin-top: 90px; padding-top: 22px; border-top: 1px solid var(--gray-700); color: var(--gray-500); font-size: 9px; letter-spacing: .08em; }
+
+    @media (max-width: 900px) {
+      .hero-ascii { opacity: .45; right: -20px; }
+      .research-grid { grid-template-columns: 1fr; }
+      .research-card { min-height: 330px; }
+      .research-card h3 { margin-top: 48px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .parallel-card { grid-template-columns: 1fr; gap: 42px; }
+      .work-item { grid-template-columns: 44px 1fr 28px; gap: 14px; }
+      .work-description { grid-column: 2 / 3; grid-row: 2; }
+      .work-arrow { grid-column: 3; grid-row: 1 / 3; }
+      .system-status { display: none; }
+    }
+    @media (max-width: 600px) {
+      .site-header { height: 58px; padding: 0 20px; }
+      .brand { font-size: 10px; }
+      .brand-mark { width: 25px; height: 25px; }
+      .site-nav { gap: 15px; }
+      .site-nav a { font-size: 9px; }
+      .site-nav a:nth-child(2), .site-nav a:nth-child(3) { display: none; }
+      .hero { padding: 88px 20px 0; }
+      .hero-meta span:last-child { display: none; }
+      .hero-main { padding: 60px 0 38px; }
+      .hero-title { font-size: clamp(58px, 20vw, 100px); line-height: .79; }
+      .hero-title .outline { margin-left: 0; }
+      .hero-ascii { display: none; }
+      .hero-bottom { grid-template-columns: 1fr; padding-bottom: 30px; }
+      .scroll-link { justify-self: end; }
+      .ticker { margin: 0 -20px; }
+      .section { padding: 78px 20px; }
+      .section-heading { grid-template-columns: 38px 1fr; gap: 10px; margin-bottom: 45px; }
+      .section-code { display: none; }
+      .section-title { font-size: 38px; }
+      .terminal { box-shadow: 7px 7px 0 var(--gray-900); }
+      .terminal pre { font-size: 10px; line-height: 1.9; }
+      .parallel-card { margin-top: 30px; }
+      .work-item { padding: 24px 8px; }
+      .work-name { font-size: 18px; }
+      .trajectory-grid { grid-template-columns: 1fr; }
+      .trajectory-item, .trajectory-item + .trajectory-item { padding: 28px 0; border-right: 0; border-bottom: 1px solid var(--gray-700); }
+      .trajectory-item:last-child { border-bottom: 0; }
+      .trajectory-item h3 { margin-top: 22px; }
+      .site-footer { padding: 70px 20px 24px; }
+      .footer-link { font-size: 19vw; }
+      .footer-bottom { flex-wrap: wrap; margin-top: 60px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Blue Bolete home">
+      <span class="brand-mark" aria-hidden="true">B_</span>
+      BLUE BOLETE
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#work">Work</a>
+      <a href="https://github.com/xiaoyangyyy" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </nav>
+    <div class="system-status"><span class="status-dot" aria-hidden="true"></span> SYSTEM ONLINE</div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-meta">
+        <span>Researcher / Builder / System Thinker</span>
+        <span>Signal over noise · Est. [undefined]</span>
+      </div>
+
+      <div class="hero-main">
+        <p class="kicker">From urban space to intelligent systems</p>
+        <h1 class="hero-title" id="hero-title" aria-label="Blue Bolete">
+          <span class="solid">Blue</span>
+          <span class="outline">Bolete</span>
+        </h1>
+        <div class="hero-ascii" aria-hidden="true">
+          <pre>              .-~'-.
+          .-~       ~-.
+       .-'   .-.   .-.  '-.
+     .'     /   \ /   \     '.
+    /      |     X     |      \
+   ;        \   / \   /        ;
+   |         '-'   '-'         |
+   ;    ____             ____  ;
+    \__'   '-----------'   '__/
+       \__    |     |    __/
+           |  |     |  |
+           |  |     |  |
+            \ |     | /
+             '-------'</pre>
+          <p class="ascii-label">BLUE-BRUISING BOLETE</p>
+        </div>
+      </div>
+
+      <div class="hero-bottom">
+        <p class="hero-statement">
+          Researching <strong>on-device native adaptive intelligence</strong>, kernel architecture, and AI-native operating systems. Building <strong>Auto Research</strong> in parallel.
+        </p>
+        <a class="scroll-link" href="#about">SCROLL TO DECODE <span aria-hidden="true">↓</span></a>
+      </div>
+
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span><b>ON-DEVICE AI</b> // ADAPTIVE SYSTEMS // <b>KERNEL ARCHITECTURE</b> // AI-NATIVE OS // <b>AUTO RESEARCH</b> // HUMAN AGENCY //&nbsp;</span>
+          <span><b>ON-DEVICE AI</b> // ADAPTIVE SYSTEMS // <b>KERNEL ARCHITECTURE</b> // AI-NATIVE OS // <b>AUTO RESEARCH</b> // HUMAN AGENCY //&nbsp;</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="section-heading">
+        <span class="section-number">[ 01 ]</span>
+        <h2 class="section-title" id="about-title">Identity</h2>
+        <span class="section-code">/WHOAMI</span>
+      </div>
+
+      <div class="about-grid">
+        <div class="terminal" role="img" aria-label="Terminal introduction for Blue Bolete">
+          <div class="terminal-bar">
+            <span>blue_bolete@research: ~</span>
+            <span class="terminal-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          </div>
+          <pre><span class="muted">// initialize identity</span>
+<span class="prompt">$ whoami</span>
+Blue Bolete
+
+<span class="prompt">$ cat background.txt</span>
+B.A. + M.A.  → Urban Design
+Research_01 → Neurogeography
+Research_02 → Mobility & Health
+
+<span class="prompt">$ focus --now</span>
+[✓] On-Device Adaptive Intelligence
+[✓] Kernel Architecture
+[✓] AI-Native Operating Systems
+[✓] Auto Research <span class="muted">// in parallel</span>
+
+<span class="prompt">$ echo $MISSION</span>
+"Expand human agency."
+<span class="prompt">$ </span><span class="cursor" aria-hidden="true"></span></pre>
+        </div>
+
+        <div>
+          <p class="about-cn">
+            我本硕阶段学习城市设计，过去研究神经地理学与出行健康。现在关注端侧原生自适应智能、内核架构与 AI-Native 操作系统，同时用 Auto Research 解放科研中的重复劳动。
+          </p>
+          <p class="about-en">
+            I’m an urban-design-trained researcher and builder. My path moves from cities, cognition, and mobility to the architecture of intelligent systems—without abandoning the central question: how can environments and tools expand human agency?
+          </p>
+          <p class="about-note">FROM DESIGNING PHYSICAL SPACE → TO DESIGNING HUMAN–AI COLLABORATION</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="research" aria-labelledby="research-title">
+      <div class="section-heading">
+        <span class="section-number">[ 02 ]</span>
+        <h2 class="section-title" id="research-title">Research.exe</h2>
+        <span class="section-code">CURRENT_PROCESSES</span>
+      </div>
+
+      <div class="research-grid">
+        <article class="research-card">
+          <div class="card-index"><span>PROCESS_001</span><span>RUNNING</span></div>
+          <h3><span>端侧原生自适应智能</span>On-Device<br>Adaptive<br>Intelligence</h3>
+          <p class="card-description">让智能在终端设备上原生运行，并随用户、环境与任务持续适应，探索个性化、低延迟与隐私保护的新平衡。</p>
+          <div class="card-tags">EDGE AI / ADAPTATION / PRIVACY</div>
+        </article>
+
+        <article class="research-card">
+          <div class="card-index"><span>PROCESS_002</span><span>RUNNING</span></div>
+          <h3><span>内核架构</span>Kernel<br>Architecture</h3>
+          <p class="card-description">面向智能体工作负载重新思考操作系统内核：资源调度、记忆管理、工具调用与安全边界。</p>
+          <div class="card-tags">OS KERNEL / RUNTIME / SCHEDULING</div>
+        </article>
+
+        <article class="research-card">
+          <div class="card-index"><span>PROCESS_003</span><span>RUNNING</span></div>
+          <h3><span>AI-Native 操作系统</span>AI-Native<br>Operating<br>Systems</h3>
+          <p class="card-description">从“管理应用”走向“理解意图”，让操作系统协调模型、智能体与工具，与人共同完成复杂任务。</p>
+          <div class="card-tags">INTENT / AGENTS / MEMORY / TOOLS</div>
+        </article>
+      </div>
+
+      <article class="parallel-card">
+        <div>
+          <span class="parallel-label">[ PARALLEL_PROCESS ]</span>
+          <h3>Auto<br>Research.</h3>
+        </div>
+        <div class="parallel-copy">
+          <p>自动化文献发现、知识整理、实验执行、结果分析与写作辅助，把博士生从机械劳动中解放出来，把时间还给问题、判断与创造。</p>
+          <p class="en">Automate the repeatable. Preserve the irreplaceable: questions, judgment, and discovery.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="section-heading">
+        <span class="section-number">[ 03 ]</span>
+        <h2 class="section-title" id="work-title">Selected Work</h2>
+        <span class="section-code">/OPEN_SOURCE</span>
+      </div>
+
+      <div class="work-list">
+        <a class="work-item" href="https://github.com/xiaoyangyyy/causal-decompiler" target="_blank" rel="noreferrer">
+          <span class="work-number">001</span><span class="work-name">causal-decompiler</span><span class="work-description">学术实验室多智能体沙盘</span><span class="work-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="work-item" href="https://github.com/xiaoyangyyy/neural-causal-decompiler" target="_blank" rel="noreferrer">
+          <span class="work-number">002</span><span class="work-name">neural-causal-decompiler</span><span class="work-description">带证明证书的神经因果反编译</span><span class="work-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="work-item" href="https://github.com/xiaoyangyyy/minecraft-scientist" target="_blank" rel="noreferrer">
+          <span class="work-number">003</span><span class="work-name">minecraft-scientist</span><span class="work-description">在 Minecraft 里做因果机制实验</span><span class="work-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="work-item" href="https://github.com/xiaoyangyyy/theoryshift-terra" target="_blank" rel="noreferrer">
+          <span class="work-number">004</span><span class="work-name">theoryshift-terra</span><span class="work-description">可执行理论运行时</span><span class="work-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="work-item" href="https://github.com/xiaoyangyyy/Generative-Football-Society" target="_blank" rel="noreferrer">
+          <span class="work-number">005</span><span class="work-name">Generative-Football-Society</span><span class="work-description">多智能体足球社会模拟</span><span class="work-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <a class="all-work" href="https://github.com/xiaoyangyyy?tab=repositories" target="_blank" rel="noreferrer">VIEW ALL REPOSITORIES <span aria-hidden="true">↗</span></a>
+    </section>
+
+    <section class="section" aria-labelledby="trajectory-title">
+      <div class="section-heading">
+        <span class="section-number">[ 04 ]</span>
+        <h2 class="section-title" id="trajectory-title">Previous Layers</h2>
+        <span class="section-code">RESEARCH_HISTORY.LOG</span>
+      </div>
+      <div class="trajectory-grid">
+        <article class="trajectory-item"><span>LAYER_01 / FOUNDATION</span><h3>Urban Design</h3><p>以空间、场所和系统思维理解复杂城市问题。</p></article>
+        <article class="trajectory-item"><span>LAYER_02 / COGNITION</span><h3>Neurogeography</h3><p>探索环境、感知、认知与行为之间的联系。</p></article>
+        <article class="trajectory-item"><span>LAYER_03 / BEHAVIOR</span><h3>Mobility & Health</h3><p>研究出行行为、建成环境与身心健康的关系。</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-kicker">OPEN TO IDEAS / QUESTIONS / COLLABORATION</p>
+    <a class="footer-link" href="https://github.com/xiaoyangyyy" target="_blank" rel="noreferrer">LET'S BUILD ↗</a>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> BLUE BOLETE</span>
+      <span>LOCAL TIME <span id="clock">--:--:--</span></span>
+      <a href="#top">BACK TO TOP ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    const updateClock = () => {
+      document.getElementById('clock').textContent = new Date().toLocaleTimeString('en-GB', { hour12: false });
+    };
+    document.getElementById('year').textContent = new Date().getFullYear();
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>
