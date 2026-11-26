@@ -6,14 +6,14 @@
   <meta name="theme-color" content="#000000">
   <meta name="description" content="Blue Bolete — on-device adaptive intelligence, kernel architecture, AI-native OS, Auto Research, open-source projects and datasets.">
   <meta property="og:title" content="Blue Bolete — Research & Repositories">
-  <meta property="og:description" content="Everything is a plugin. Every plugin is a capability. Data is the new land.">
+  <meta property="og:description" content="Everything is a plugin. Every plugin is a capability. Data is all you need.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://xiaoyangyyy.github.io/">
   <meta property="og:image" content="https://xiaoyangyyy.github.io/avatar.webp">
   <link rel="canonical" href="https://xiaoyangyyy.github.io/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Long+Cang&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai&display=swap" rel="stylesheet">
   <title>Blue Bolete — Research & Repositories</title>
   <style>
     :root {
@@ -23,8 +23,8 @@
       --muted: #aaa;
       --dim: #767676;
       --line: #2b2b2b;
-      --mono: "Long Cang", "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", "Microsoft YaHei", monospace;
-      --sans: "Long Cang", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      --mono: "LXGW WenKai", "KaiTi", "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", "Microsoft YaHei", monospace;
+      --sans: "LXGW WenKai", "KaiTi", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
     }
 
     * { box-sizing: border-box; }
@@ -109,6 +109,15 @@
     h2 { margin: 0; font-family: var(--sans); font-size: clamp(34px, 3.7vw, 50px); line-height: 1; letter-spacing: -.025em; }
     .total { margin-left: 10px; color: var(--muted); font-family: var(--mono); font-size: 14px; font-weight: 400; letter-spacing: 0; vertical-align: top; }
     .curated { margin: 0; color: var(--muted); font-size: 11px; letter-spacing: .08em; }
+    .repo-search { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding: 0 14px; border: 1px solid var(--line); background: #050505; }
+    .repo-search:focus-within { border-color: var(--white); }
+    .search-prompt { color: var(--muted); font-size: 17px; }
+    .repo-search input { flex: 1; min-width: 0; height: 54px; padding: 0; border: 0; outline: 0; background: transparent; color: var(--white); font: 16px var(--mono); }
+    .repo-search input::placeholder { color: var(--dim); opacity: 1; }
+    .repo-search kbd { padding: 1px 7px; border: 1px solid var(--dim); color: var(--muted); font: 12px var(--mono); }
+    .search-status { margin: 0 0 30px; color: var(--dim); font-size: 11px; letter-spacing: .08em; }
+    .repo[hidden], .repo-group[hidden], .empty-state[hidden] { display: none; }
+    .empty-state { margin: 0 0 42px; padding: 28px 14px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--muted); font-size: 14px; }
     .repo-group { margin-bottom: 42px; }
     .group-heading { display: flex; align-items: center; gap: 14px; margin: 0 0 14px; color: var(--light); font-size: 13px; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; }
     .group-heading span:first-child { color: var(--dim); }
@@ -233,7 +242,7 @@
       </article>
       <article class="motto">
         <div class="motto-meta"><span>/* MANIFESTO_02 */</span><span>[0x02]</span></div>
-        <p>DATA IS THE<br><span class="invert">NEW LAND.</span></p>
+        <p>DATA IS ALL<br><span class="invert">YOU NEED.</span></p>
         <div class="motto-end">:: CULTIVATE &amp; SHARE ::</div>
       </article>
     </section>
@@ -243,7 +252,15 @@
       <p class="curated">CURATED_LIST</p>
     </div>
 
-    <section class="repo-group" aria-labelledby="projects-title">
+    <div class="repo-search" role="search">
+      <label class="search-prompt" for="repo-search" aria-label="搜索仓库">&gt;</label>
+      <input id="repo-search" type="search" placeholder="TYPE_NAME_OR_KEYWORDS..." aria-label="搜索项目和数据集" autocomplete="off" spellcheck="false">
+      <kbd aria-hidden="true">/</kbd>
+    </div>
+    <p class="search-status" id="search-status" aria-live="polite">MATCHED 04 / 04</p>
+    <p class="empty-state" id="empty-state" hidden>NO_MATCH // TRY_ANOTHER_KEYWORD</p>
+
+    <section class="repo-group" data-category="projects" aria-labelledby="projects-title">
       <h3 class="group-heading" id="projects-title"><span>[01]</span> Projects <span class="group-count">02</span></h3>
       <div class="repo-list">
         <a class="repo" href="https://github.com/xiaoyangyyy/Generative-Football-Society" target="_blank" rel="noreferrer"><span class="repo-name"><span class="repo-id">P01</span>Generative-Football-Society</span><span class="repo-description">多智能体足球社会模拟</span><span class="repo-arrow">↗</span></a>
@@ -251,7 +268,7 @@
       </div>
     </section>
 
-    <section class="repo-group" aria-labelledby="datasets-title">
+    <section class="repo-group" data-category="datasets" aria-labelledby="datasets-title">
       <h3 class="group-heading" id="datasets-title"><span>[02]</span> Datasets <span class="group-count">02</span></h3>
       <div class="repo-list">
         <a class="repo" href="https://github.com/xiaoyangyyy/sixfoot-cn-routes" target="_blank" rel="noreferrer"><span class="repo-name"><span class="repo-id">D01</span>sixfoot-cn-routes</span><span class="repo-description">六只脚公开城市轨迹</span><span class="repo-arrow">↗</span></a>
@@ -263,6 +280,47 @@
       <span>END_OF_DIRECTORY</span>
       <a href="https://github.com/xiaoyangyyy?tab=repositories" target="_blank" rel="noreferrer">MORE ON GITHUB ↗</a>
     </footer>
+    <script>
+      const searchInput = document.getElementById('repo-search');
+      const searchStatus = document.getElementById('search-status');
+      const emptyState = document.getElementById('empty-state');
+      const repoGroups = [...document.querySelectorAll('.repo-group')];
+
+      const filterRepositories = () => {
+        const terms = searchInput.value.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
+        let totalMatches = 0;
+
+        repoGroups.forEach((group) => {
+          let groupMatches = 0;
+          group.querySelectorAll('.repo').forEach((repo) => {
+            const searchableText = `${group.dataset.category} ${repo.textContent}`.toLocaleLowerCase();
+            const matches = terms.every((term) => searchableText.includes(term));
+            repo.hidden = !matches;
+            if (matches) groupMatches += 1;
+          });
+          group.hidden = groupMatches === 0;
+          group.querySelector('.group-count').textContent = String(groupMatches).padStart(2, '0');
+          totalMatches += groupMatches;
+        });
+
+        searchStatus.textContent = `MATCHED ${String(totalMatches).padStart(2, '0')} / 04`;
+        emptyState.hidden = totalMatches !== 0;
+      };
+
+      searchInput.addEventListener('input', filterRepositories);
+      document.addEventListener('keydown', (event) => {
+        const isTyping = event.target.matches('input, textarea') || event.target.isContentEditable;
+        if (event.key === '/' && !isTyping) {
+          event.preventDefault();
+          searchInput.focus();
+        }
+        if (event.key === 'Escape' && event.target === searchInput) {
+          searchInput.value = '';
+          filterRepositories();
+          searchInput.blur();
+        }
+      });
+    </script>
   </main>
   <a class="github-fab" href="https://github.com/xiaoyangyyy?tab=repositories" target="_blank" rel="noreferrer" aria-label="Open GitHub repositories">
     <svg class="github-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
