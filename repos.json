@@ -1,0 +1,325 @@
+[
+  {
+    "name": "chinese-ancient-recipes",
+    "description": "公有领域古菜谱。每条都有菜名、原料和做法。",
+    "html_url": "https://github.com/xiaoyangyyy/chinese-ancient-recipes",
+    "topics": [
+      "chinese-dataset",
+      "dataset"
+    ],
+    "updated_at": "2026-11-25T15:52:31Z"
+  },
+  {
+    "name": "nature-journals",
+    "description": "Nature 主刊和带 Nature 刊名的子刊论文书目，69 本、789101 篇。不含 Scientific Data、Scientific Reports，以及还没有论文的 6 本新刊。三个超过 100MB 的文件按行分卷。",
+    "html_url": "https://github.com/xiaoyangyyy/nature-journals",
+    "topics": [],
+    "updated_at": "2026-11-25T07:39:16Z"
+  },
+  {
+    "name": "scientific-data-catalog",
+    "description": "Catalog of Scientific Data articles with repository links, grouped by research field.",
+    "html_url": "https://github.com/xiaoyangyyy/scientific-data-catalog",
+    "topics": [],
+    "updated_at": "2026-11-23T20:49:21Z"
+  },
+  {
+    "name": "typhoon-tracks",
+    "description": "1980年以来热带气旋逐次位置",
+    "html_url": "https://github.com/xiaoyangyyy/typhoon-tracks",
+    "topics": [
+      "dataset",
+      "global-dataset"
+    ],
+    "updated_at": "2026-11-23T14:29:06Z"
+  },
+  {
+    "name": "abs-journals",
+    "description": "ABS/AJG 2024 评级为 4 和 4* 的 139 本期刊论文书目，来自 Crossref 的 journal-article。按 DOI 去重后 691,933 篇（原始 693,503 行），只有书目、没有摘要。GitHub 只放分学科和分期刊的 CSV；合并总表与 JSONL 超过 100MB，留在本地。已知三本刊有漏收，另有空题名、空作者，以及标为 2027 年的排期记录。",
+    "html_url": "https://github.com/xiaoyangyyy/abs-journals",
+    "topics": [],
+    "updated_at": "2026-11-23T01:48:50Z"
+  },
+  {
+    "name": "xiaoyangyyy",
+    "description": "数据集和项目分开列在这里。",
+    "html_url": "https://github.com/xiaoyangyyy/xiaoyangyyy",
+    "topics": [],
+    "updated_at": "2026-11-22T12:40:11Z"
+  },
+  {
+    "name": "world-film-cities",
+    "description": "Wikidata films with a filming place and a different narrative place",
+    "html_url": "https://github.com/xiaoyangyyy/world-film-cities",
+    "topics": [],
+    "updated_at": "2026-11-22T08:07:27Z"
+  },
+  {
+    "name": "ai-math-discussions",
+    "description": "Public discussions about using AI to research mathematics. Original posts and full comment threads.",
+    "html_url": "https://github.com/xiaoyangyyy/ai-math-discussions",
+    "topics": [
+      "dataset",
+      "global-dataset"
+    ],
+    "updated_at": "2026-11-22T03:51:59Z"
+  },
+  {
+    "name": "ai-quant-discussions",
+    "description": "Public discussions about using AI for quantitative trading. Original posts and full comment threads.",
+    "html_url": "https://github.com/xiaoyangyyy/ai-quant-discussions",
+    "topics": [
+      "dataset",
+      "global-dataset"
+    ],
+    "updated_at": "2026-11-22T03:51:07Z"
+  },
+  {
+    "name": "ai-code-discussions",
+    "description": "Public discussions about using AI to write and research code. Original posts and full comment threads.",
+    "html_url": "https://github.com/xiaoyangyyy/ai-code-discussions",
+    "topics": [
+      "dataset",
+      "global-dataset"
+    ],
+    "updated_at": "2026-11-22T03:50:50Z"
+  },
+  {
+    "name": "Generative-Football-Society",
+    "description": "A World Cup-scale multi-agent social simulation framework that drives matches and narratives through continuous dynamics, emotion and memory fields, constrained large-language-model reflection, and multi-expert fusion.",
+    "html_url": "https://github.com/xiaoyangyyy/Generative-Football-Society",
+    "topics": [
+      "project"
+    ],
+    "updated_at": "2026-11-21T20:36:50Z"
+  },
+  {
+    "name": "sixfoot-cn-routes",
+    "description": "六只脚公开城市轨迹，按城市压缩包发布。",
+    "html_url": "https://github.com/xiaoyangyyy/sixfoot-cn-routes",
+    "topics": [
+      "chinese-dataset",
+      "dataset"
+    ],
+    "updated_at": "2026-11-21T04:31:08Z"
+  },
+  {
+    "name": "chinese-certified-agri-products",
+    "description": "Green food and geographical-indication agricultural products.",
+    "html_url": "https://github.com/xiaoyangyyy/chinese-certified-agri-products",
+    "topics": [
+      "chinese-dataset",
+      "dataset"
+    ],
+    "updated_at": "2026-11-21T04:26:35Z"
+  },
+  {
+    "name": "chinese-product-recalls",
+    "description": "Public defect-product recall notices from the SAMR recall center.",
+    "html_url": "https://github.com/xiaoyangyyy/chinese-product-recalls",
+    "topics": [
+      "chinese-dataset",
+      "dataset"
+    ],
+    "updated_at": "2026-11-21T04:25:39Z"
+  },
+  {
+    "name": "chinese-grain-prices",
+    "description": "Public staple-food prices from the China Price Information Network.",
+    "html_url": "https://github.com/xiaoyangyyy/chinese-grain-prices",
+    "topics": [
+      "chinese-dataset",
+      "dataset"
+    ],
+    "updated_at": "2026-11-21T04:25:07Z"
+  },
+  {
+    "name": "maize-phenotypes",
+    "description": "B73 v5 maize genes with genetically validated phenotypes",
+    "html_url": "https://github.com/xiaoyangyyy/maize-phenotypes",
+    "topics": [],
+    "updated_at": "2026-11-20T17:14:40Z"
+  },
+  {
+    "name": "DreamMem",
+    "description": "Evidence-guided constructive memory in masked diffusion language models",
+    "html_url": "https://github.com/xiaoyangyyy/DreamMem",
+    "topics": [
+      "concept-learning",
+      "diffusion-language-models",
+      "memory",
+      "program-synthesis"
+    ],
+    "updated_at": "2026-11-20T15:32:30Z"
+  },
+  {
+    "name": "global-clinical-trials",
+    "description": "ClinicalTrials.gov 公开登记，一项一行。",
+    "html_url": "https://github.com/xiaoyangyyy/global-clinical-trials",
+    "topics": [
+      "dataset",
+      "global-dataset"
+    ],
+    "updated_at": "2026-11-17T17:00:55Z"
+  },
+  {
+    "name": "xiaoyangyyy.github.io",
+    "description": "Blue Bolete — AI-native systems and Auto Research",
+    "html_url": "https://github.com/xiaoyangyyy/xiaoyangyyy.github.io",
+    "topics": [],
+    "updated_at": "2026-11-16T15:59:13Z"
+  },
+  {
+    "name": "market-causal-engine",
+    "description": "Trace-first runtime causal engine for market event forensics (earnings, short reports, macro)",
+    "html_url": "https://github.com/xiaoyangyyy/market-causal-engine",
+    "topics": [
+      "project"
+    ],
+    "updated_at": "2026-11-14T13:36:46Z"
+  },
+  {
+    "name": "theoryshift-terra",
+    "description": "TERRA / TheoryShift: executable theory runtime, theory ecology, and mechanism-shift research artifacts",
+    "html_url": "https://github.com/xiaoyangyyy/theoryshift-terra",
+    "topics": [
+      "project"
+    ],
+    "updated_at": "2026-11-14T13:36:44Z"
+  },
+  {
+    "name": "minifield-composer",
+    "description": "MiniField Composer: recursive field-structured multi-agent composition system",
+    "html_url": "https://github.com/xiaoyangyyy/minifield-composer",
+    "topics": [
+      "project"
+    ],
+    "updated_at": "2026-11-14T13:36:42Z"
+  },
+  {
+    "name": "neural-causal-decompiler",
+    "description": "Neural causal decompilation research with scoped proof certificates and reproducible validation; original requirements remain open.",
+    "html_url": "https://github.com/xiaoyangyyy/neural-causal-decompiler",
+    "topics": [
+      "project"
+    ],
+    "updated_at": "2026-11-14T13:36:38Z"
+  },
+  {
+    "name": "causal-decompiler",
+    "description": "60-round 14-agent academic lab sandbox for Agent MRI experiments",
+    "html_url": "https://github.com/xiaoyangyyy/causal-decompiler",
+    "topics": [
+      "project"
+    ],
+    "updated_at": "2026-11-14T13:36:36Z"
+  },
+  {
+    "name": "minecraft-scientist",
+    "description": "Executable causal mechanism discovery, interventional discrimination, theory revision and transfer in Minecraft research worlds.",
+    "html_url": "https://github.com/xiaoyangyyy/minecraft-scientist",
+    "topics": [
+      "project"
+    ],
+    "updated_at": "2026-11-14T13:36:34Z"
+  },
+  {
+    "name": "minecraft-scientist-runs",
+    "description": "minecraft-scientist experiment runs, split 7z archive",
+    "html_url": "https://github.com/xiaoyangyyy/minecraft-scientist-runs",
+    "topics": [
+      "dataset"
+    ],
+    "updated_at": "2026-11-14T13:36:32Z"
+  },
+  {
+    "name": "mapmyride-us-routes",
+    "description": "Public MapMyRide GPX routes for 50 US cities. 美国 50 个城市的公开路线。",
+    "html_url": "https://github.com/xiaoyangyyy/mapmyride-us-routes",
+    "topics": [
+      "dataset",
+      "global-dataset"
+    ],
+    "updated_at": "2026-11-14T13:36:23Z"
+  },
+  {
+    "name": "old-city-films",
+    "description": "Short licensed clips of American cities from the Prelinger Archives",
+    "html_url": "https://github.com/xiaoyangyyy/old-city-films",
+    "topics": [
+      "dataset",
+      "global-dataset"
+    ],
+    "updated_at": "2026-11-14T13:36:21Z"
+  },
+  {
+    "name": "el-nino-winters",
+    "description": "四十个冬季的全球海温距平，一行一个格子",
+    "html_url": "https://github.com/xiaoyangyyy/el-nino-winters",
+    "topics": [
+      "dataset",
+      "global-dataset"
+    ],
+    "updated_at": "2026-11-14T13:36:19Z"
+  },
+  {
+    "name": "fireballs",
+    "description": "火流星最亮点，1988至2026",
+    "html_url": "https://github.com/xiaoyangyyy/fireballs",
+    "topics": [
+      "dataset",
+      "global-dataset"
+    ],
+    "updated_at": "2026-11-14T13:36:18Z"
+  },
+  {
+    "name": "antarctic-icebergs",
+    "description": "1980年以来南极冰山逐日位置",
+    "html_url": "https://github.com/xiaoyangyyy/antarctic-icebergs",
+    "topics": [
+      "dataset",
+      "global-dataset"
+    ],
+    "updated_at": "2026-11-14T13:36:16Z"
+  },
+  {
+    "name": "origin-food",
+    "description": "Official geographical-indication dataset of origin foods",
+    "html_url": "https://github.com/xiaoyangyyy/origin-food",
+    "topics": [
+      "dataset",
+      "global-dataset"
+    ],
+    "updated_at": "2026-11-14T13:36:10Z"
+  },
+  {
+    "name": "global-stamp-stories",
+    "description": "万国邮政联盟 WNS 公开邮票登记，一枚一行。",
+    "html_url": "https://github.com/xiaoyangyyy/global-stamp-stories",
+    "topics": [
+      "dataset",
+      "global-dataset"
+    ],
+    "updated_at": "2026-11-14T13:36:08Z"
+  },
+  {
+    "name": "chinese-incense-formulas",
+    "description": "公有领域香方。每条都有香名、原料和做法。",
+    "html_url": "https://github.com/xiaoyangyyy/chinese-incense-formulas",
+    "topics": [
+      "chinese-dataset",
+      "dataset"
+    ],
+    "updated_at": "2026-11-14T13:35:57Z"
+  },
+  {
+    "name": "chinese-smell-lexicon",
+    "description": "从公版古诗、本草和方志抽出的中文气味词典",
+    "html_url": "https://github.com/xiaoyangyyy/chinese-smell-lexicon",
+    "topics": [
+      "chinese-dataset",
+      "dataset"
+    ],
+    "updated_at": "2026-11-14T13:35:52Z"
+  }
+]
